@@ -22,11 +22,7 @@ import wordsegment as wseg
 import sys
 
 uni_dict_bin = './dict_ver1/unigram-word.bin'
-bi_dict_bin = './dict_ver1/bigram-word.bin'
-#filein = sys.argv[1]
-#fileout = sys.argv[2]
-#wordDelimiter= ' ' # assign local variable delimiter        
-#outputFILE = open(fileout, "w")        
+bi_dict_bin = './dict_ver1/bigram-word.bin'      
 
 def count_prob():  
     wseg.P_unigram = wseg.ProbDist(uni_dict_bin, True)
@@ -34,4 +30,4 @@ def count_prob():
 
 def words(line):
     listString = wseg.viterbi(line.replace(" ", "").strip()) # remove space between words and pass to viterbi()
-    return listString
+    return listString[1]
