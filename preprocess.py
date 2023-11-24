@@ -8,3 +8,10 @@ def read_data():
     neg_reviews = data['neg']
 
     return pos_reviews, neg_reviews
+
+def main():
+    pos, neg = read_data()
+    print("Positive reviews : " ,len(pos))
+    print("Negative reviews : ", len(neg))
+
+main()
