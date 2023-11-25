@@ -1,7 +1,7 @@
 import json
 import re
 from string import punctuation
-from stopwords import stopwords
+from stopwords import stopwords2
 
 import myword
 
@@ -41,8 +41,15 @@ def sentence_cleaning(line):
 def myWord(line):
     return myword.words(line)
 
+def add_emotions(clean_text, original):
+    for emotion in emotions:
+        if emotion in original:
+            clean_text += [emotion]
+    
+    return clean_text
+
 def remove_stopwords(data):
-    return [item for item in data if item not in stopwords]
+    return [item for item in data if item not in stopwords2]
 
 def segment_words(data):
     myword.count_prob()
@@ -51,11 +58,10 @@ def segment_words(data):
         filter_text = sentence_cleaning(item)
         words = myWord(filter_text)
         
-        #emotions check
-        for emotion in emotions:
-            if emotion in item:
-                words += [emotion]
+        #check emotions
+        words = add_emotions(words, item)
         
+        #remove stopwords
         words = remove_stopwords(words)
 
         result += [words]
@@ -67,7 +73,7 @@ def main():
     pos, neg = read_data()
     #print("Positive reviews : " ,len(pos))
     #print("Negative reviews : ", len(neg))
-    result = segment_words(pos[:3])
+    result = segment_words(neg[:5])
     print(result)
 
 
