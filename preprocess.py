@@ -4,6 +4,20 @@ from string import punctuation
 
 import myword
 
+emotions = [
+    ":)",       # Happy or friendly
+    ":(",       # Sadness or disappointment
+    ":D",       # Extreme happiness or joy
+    ":/",       # Uncertainty or confusion
+    ":O",       # Surprise or shock
+    ":P",       # Playful or cheeky
+    ":|",       # Neutrality or indifference
+    ";)",       # Humor or playful wink
+    ":'(",      # Intense sadness or crying
+    "<3",       # Love or affection
+    "xD"        #laugh
+]
+
 def read_data():
     f = open('data.json')
     data = json.load(f)
@@ -31,7 +45,15 @@ def segment_words(data):
     result = []
     for item in data:
         filter_text = sentence_cleaning(item)
-        result += [myWord(filter_text)]
+        words = myWord(filter_text)
+        
+        #emotions check
+        for emotion in emotions:
+            if emotion in item:
+                words += [emotion]
+
+        result += [words]
+
     return result
 
 #main method is just to verify the upper methods
