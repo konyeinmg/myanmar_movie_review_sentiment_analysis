@@ -14,7 +14,7 @@ def read_data():
     return pos_reviews, neg_reviews
 
 def sentence_cleaning(line):
-    remove_eng = ''.join(re.findall("[^a-z0-9]", line))
+    remove_eng = ''.join(re.findall("[^A-Za-z0-9]", line))
     filter_text = ''
 
     for c in remove_eng:
@@ -34,11 +34,12 @@ def segment_words(data):
         result += [myWord(filter_text)]
     return result
 
+#main method is just to verify the upper methods
 def main():
     pos, neg = read_data()
     #print("Positive reviews : " ,len(pos))
     #print("Negative reviews : ", len(neg))
-    result = segment_words(neg[-5:])
+    result = segment_words(pos[:10])
     print(result)
 
 
