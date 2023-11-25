@@ -19,8 +19,8 @@ emotions = [
     "xD"        #laugh
 ]
 
-def read_data():
-    f = open('data.json')
+def read_data(url):
+    f = open(url)
     data = json.load(f)
 
     pos_reviews = data['pos']
@@ -68,6 +68,7 @@ def segment_words(data):
 
     return result
 
+'''
 #main method is just to verify the upper methods
 def main():
     pos, neg = read_data()
@@ -78,3 +79,4 @@ def main():
 
 
 main()
+'''
