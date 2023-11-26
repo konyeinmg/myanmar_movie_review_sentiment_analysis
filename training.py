@@ -21,5 +21,9 @@ test_x = test_pos + test_neg
 train_y = np.append(np.ones(len(train_pos)), np.zeros(len(train_neg)))
 test_y = np.append(np.ones(len(test_pos)), np.zeros(len(test_neg)))
 
-print(len(train_x))
-print(len(test_x))
+#print(len(train_x))
+#print(len(test_x))
+
+freqs = naivebayes.count_words(train_x, train_y)
+logprior, loglikelihood = naivebayes.train(freqs, train_x, train_y)
+#print(loglikelihood)
