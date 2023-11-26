@@ -52,30 +52,26 @@ def remove_stopwords(data):
     return [item for item in data if item not in stopwords2]
 
 def segment_words(data):
-    myword.count_prob()
-    result = []
-    for item in data:
-        filter_text = sentence_cleaning(item)
-        words = myWord(filter_text)
+    #myword.count_prob()
+    filter_text = sentence_cleaning(data)
+    words = myWord(filter_text)
         
-        #check emotions
-        words = add_emotions(words, item)
+    #check emotions
+    words = add_emotions(words, data)
         
-        #remove stopwords
-        words = remove_stopwords(words)
+    #remove stopwords
+    words = remove_stopwords(words)
 
-        result += [words]
-
-    return result
+    return words
 
 '''
 #main method is just to verify the upper methods
 def main():
-    pos, neg = read_data()
+    pos, neg = read_data('data.json')
     #print("Positive reviews : " ,len(pos))
     #print("Negative reviews : ", len(neg))
-    result = segment_words(neg[:5])
-    print(result)
+    for i in range(3):
+        print(segment_words(neg[i]))
 
 
 main()

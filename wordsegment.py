@@ -27,6 +27,8 @@ sys.setrecursionlimit(10**6)
 
 global P_unigram
 global P_bigram
+uni_dict_bin = './dict_ver1/unigram-word.bin'
+bi_dict_bin = './dict_ver1/bigram-word.bin' 
 
 def read_dict (fileDICT):
     try:
@@ -60,6 +62,8 @@ class ProbDist(dict):
         else:
             return self.unknownprob(key, self.N)
 
+P_unigram = ProbDist(uni_dict_bin, True)
+P_bigram = ProbDist(bi_dict_bin, False)
 
 def conditionalProb(word_curr, word_prev):
     ### Conditional probability of current word given the previous word.
