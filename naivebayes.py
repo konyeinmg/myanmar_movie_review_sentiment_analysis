@@ -13,17 +13,62 @@ def count_words(data, y):
 
     return result 
 
+def train(counts, X, y):
+    loglikelihood = {}
+    logprior = 0
+
+    words = set(pair[0] for pair in counts.keys())
+    V = len(words)
+
+    N_pos = N_neg = V_pos = V_neg = 0
+    for pair in counts:
+        if pair[1] > 0:
+            V_pos += 1
+            N_pos += counts[pair]
+        else:
+            V_neg += 1
+            N_neg += counts[pair]
+    
+    D = len(y)
+    D_pos = len([item for item in y if item > 0])
+    D_neg = D - D_pos
+    logprior = np.log(D_pos) - np.log(D_neg)
+
+    for word in words:
+        freq_pos = counts.get((word,1), 0)
+        freq_neg = counts.get((word,0), 0)
+
+        p_w_pos = (freq_pos + 1) / (N_pos + V)
+        p_w_neg = (freq_neg + 1) / (N_neg + V)
+
+        loglikelihood[word] = np.log(p_w_pos/p_w_neg)
+    
+    return logprior, loglikelihood
+
+
+
+
+
+
+
 #main method is just to verify upper methods
 def main():
     data = ["ဇာတ်လမ်းကချာတယ်",
             "တကယ် ချာချက်",
             "ဇာတ်လမ်းအစမှာထဲက ကိုမကြိုက်တာ:(",
             "နောက်ဆုံးခန်းကြီးက ရုပ်ပေါက်လွန်းပါတယ်",
-            "စောက်ပေါကားကြီး:/",]
+            "စောက်ပေါကားကြီး:/",
+            "မြန်မာဇာတ်လမ်းတွဲတွေလဲ သူ့ဟာနဲ့သူ ပိုပိုပြီးကောင်းလာနေတာကို",
+            "ကြည့်ပြီးပြီငိုလိုက်ရတာအရမ်းပဲတစ်ကားလုံး Notting Hill ပြီးရင်ဒီကားကိုအကြိုက်ဆုံးပဲ❤️",
+            "စောင်ရမ်းမိုက်လွန်းပါတယ်❤",
+            "အရမ်းမိုက်တယ်။👍👍👍",
+            "ကြည့်ရတာ တန်သွားပြီ",]
     words = preprocess.segment_words(data)
-    y = np.ones(len(data))
+    y = [0,0,0,0,0,1,1,1,1,1]
     result = count_words(words, y)
-    print(result)
+    logprior, loglikelihood = train(result, data, y)
+    print(logprior)
+    print(loglikelihood)
 
 main()
 
