@@ -4,7 +4,7 @@ import numpy as np
 def count_words(data, y):
     result = dict()
     for y,sentence in zip(y, data):
-        for word in sentence:
+        for word in preprocess.segment_words(sentence):
             pair = (word, y)
             
             if pair in result:
@@ -47,8 +47,8 @@ def train(counts, X, y):
 
 
 def predict(review, logprior, loglikelihood):
-    words = preprocess.segment_words([review])
-    words = words[0]
+    words = preprocess.segment_words(review)
+   
     p = 0
     p += logprior
 
@@ -73,9 +73,8 @@ def main():
             "စောင်ရမ်းမိုက်လွန်းပါတယ်❤",
             "အရမ်းမိုက်တယ်။👍👍👍",
             "ကြည့်ရတာ တန်သွားပြီ",]
-    words = preprocess.segment_words(data)
     y = [0,0,0,0,0,1,1,1,1,1]
-    result = count_words(words, y)
+    result = count_words(data, y)
     logprior, loglikelihood = train(result, data, y)
     sentence = 'မိုက် ကြိုက် တန် ပို'
     result = predict(sentence, logprior, loglikelihood)
