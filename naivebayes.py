@@ -60,7 +60,7 @@ def predict(review, logprior, loglikelihood):
 
 
 
-
+'''
 #main method is just to verify upper methods
 def main():
     data = ["ဇာတ်လမ်းကချာတယ်",
@@ -81,4 +81,4 @@ def main():
     print(sentence + ' : ' + str(result))
 
 main()
-
+'''
