@@ -46,7 +46,17 @@ def train(counts, X, y):
     return logprior, loglikelihood
 
 
+def predict(review, logprior, loglikelihood):
+    words = preprocess.segment_words([review])
+    words = words[0]
+    p = 0
+    p += logprior
 
+    for word in words:
+        if word in loglikelihood:
+            p += loglikelihood[word]
+    
+    return p
 
 
 
@@ -67,8 +77,9 @@ def main():
     y = [0,0,0,0,0,1,1,1,1,1]
     result = count_words(words, y)
     logprior, loglikelihood = train(result, data, y)
-    print(logprior)
-    print(loglikelihood)
+    sentence = 'မိုက် ကြိုက် တန် ပို'
+    result = predict(sentence, logprior, loglikelihood)
+    print(sentence + ' : ' + str(result))
 
 main()
 
