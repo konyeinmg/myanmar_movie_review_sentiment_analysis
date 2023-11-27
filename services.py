@@ -36,7 +36,17 @@ def accuracy(actual_y,pred_y):
         if y == y_cat:
             result += 1
     accuracy = (result / len(actual_y)) * 100
-    return accuracy
+    return 
+
+def save_loglikelihood(file_url, loglikelihood):
+    with open(file_url, 'w') as f:
+        for item in loglikelihood:
+            string = item + ':' + str(loglikelihood[item])
+            f.write(string+'\n')
+        
+def save_logprior(file_url, logprior):
+    with open(file_url, 'w') as f:
+        f.write(str(logprior))
 
 '''
 #main method is just to verify the upper methods
