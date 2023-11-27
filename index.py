@@ -10,6 +10,6 @@ logprior = services.get_logprior('logprior.txt')
 #print(loglikelihood)
 #print(logprior)
 string = input("Enter a movie review : ")
-output = 1 if naivebayes.predict(string, logprior, loglikelihood) > 0 else 0
+output = 1 if naivebayes.predict(string, logprior, loglikelihood, True) > 0 else 0
 result = 'Good review' if output > 0 else 'Bad review'
 print(result)
