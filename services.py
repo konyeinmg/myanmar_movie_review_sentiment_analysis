@@ -56,6 +56,13 @@ def get_loglikelihood(url):
             loglikelihood[seg[0].strip()] = float(seg[1].strip())
     return loglikelihood
 
+def get_logprior(url):
+    logprior = 0
+    with open(url) as f:
+        for line in f:
+            logprior = float(line.strip())
+    return logprior
+
 '''
 #main method is just to verify the upper methods
 def main():
