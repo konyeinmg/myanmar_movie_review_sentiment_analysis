@@ -58,6 +58,8 @@ def predict(review, logprior, loglikelihood, log=False):
             if log:
                 print(word + ' : ' + str(loglikelihood[word]))
     
+    if log:
+        print('Probability : ', p)
     return p
 
 
