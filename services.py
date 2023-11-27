@@ -41,12 +41,20 @@ def accuracy(actual_y,pred_y):
 def save_loglikelihood(file_url, loglikelihood):
     with open(file_url, 'w') as f:
         for item in loglikelihood:
-            string = item + ':' + str(loglikelihood[item])
+            string = item + '=>' + str(loglikelihood[item])
             f.write(string+'\n')
         
 def save_logprior(file_url, logprior):
     with open(file_url, 'w') as f:
         f.write(str(logprior))
+    
+def get_loglikelihood(url):
+    loglikelihood = {}
+    with open(url) as f:
+        for line in f:
+            seg = line.split('=>')
+            loglikelihood[seg[0].strip()] = float(seg[1].strip())
+    return loglikelihood
 
 '''
 #main method is just to verify the upper methods
