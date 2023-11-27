@@ -1,6 +1,8 @@
 import json
 import numpy as np
 
+import naivebayes
+
 
 def read_data(url):
     f = open(url)
@@ -27,6 +29,14 @@ def train_test_split(train_percent, pos, neg):
     test_y = np.append(np.ones(len(test_pos)), np.zeros(len(test_neg)))
 
     return train_x, test_x, train_y, test_y
+
+def accuracy(actual_y,pred_y):
+    result = 0.0
+    for y,y_cat in zip(actual_y,pred_y):
+        if y == y_cat:
+            result += 1
+    accuracy = (result / len(actual_y)) * 100
+    return accuracy
 
 '''
 #main method is just to verify the upper methods

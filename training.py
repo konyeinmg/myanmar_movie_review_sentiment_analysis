@@ -14,11 +14,10 @@ freqs = naivebayes.count_words(train_x, train_y)
 logprior, loglikelihood = naivebayes.train(freqs, train_x, train_y)
 #print(loglikelihood)
 
-result = 0.0
-for review,label in zip(test_x,test_y):
-    output = 1 if naivebayes.predict(review, logprior, loglikelihood) > 0 else 0
-    if label == output:
-        result += 1
-accuracy = (result / len(test_x)) * 100
+pred_y = []
+for review in test_x:
+    pred_y += [1 if naivebayes.predict(review, logprior, loglikelihood) > 0 else 0]
+
+accuracy = services.accuracy(test_y, pred_y)
 print(accuracy) 
     
