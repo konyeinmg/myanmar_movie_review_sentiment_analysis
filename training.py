@@ -1,9 +1,10 @@
 import numpy as np
 
+import services
 import preprocess
 import naivebayes
 
-pos,neg = preprocess.read_data('data.json')
+pos,neg = services.read_data('data.json')
 
 train_percent = 0.75
 

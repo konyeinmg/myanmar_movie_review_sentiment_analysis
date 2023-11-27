@@ -19,14 +19,6 @@ emotions = [
     "xD"        #laugh
 ]
 
-def read_data(url):
-    f = open(url)
-    data = json.load(f)
-
-    pos_reviews = data['pos']
-    neg_reviews = data['neg']
-
-    return pos_reviews, neg_reviews
 
 def sentence_cleaning(line):
     remove_eng = ''.join(re.findall("[^A-Za-z0-9]", line))
@@ -67,9 +59,6 @@ def segment_words(data):
 '''
 #main method is just to verify the upper methods
 def main():
-    pos, neg = read_data('data.json')
-    #print("Positive reviews : " ,len(pos))
-    #print("Negative reviews : ", len(neg))
     for i in range(3):
         print(segment_words(neg[i]))
 
