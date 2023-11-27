@@ -27,3 +27,12 @@ test_y = np.append(np.ones(len(test_pos)), np.zeros(len(test_neg)))
 freqs = naivebayes.count_words(train_x, train_y)
 logprior, loglikelihood = naivebayes.train(freqs, train_x, train_y)
 #print(loglikelihood)
+
+result = 0.0
+for review,label in zip(test_x,test_y):
+    output = 1 if naivebayes.predict(review, logprior, loglikelihood) > 0 else 0
+    if label == output:
+        result += 1
+accuracy = (result / len(test_x)) * 100
+print(accuracy) 
+    
