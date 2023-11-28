@@ -21,11 +21,11 @@ emotions = [
 
 
 def sentence_cleaning(line):
-    remove_eng = ''.join(re.findall("[^A-Za-z0-9]", line))
+    remove_eng = ''.join(re.findall("[^A-Za-z0-9]", line)) #remove all english characters
     filter_text = ''
 
     for c in remove_eng:
-        if c not in punctuation:
+        if c not in punctuation: #remove all punctuation characters
             filter_text += c
     
     return filter_text
@@ -33,6 +33,7 @@ def sentence_cleaning(line):
 def myWord(line):
     return myword.words(line)
 
+#check emotion with original text and append to last of word list
 def add_emotions(clean_text, original):
     for emotion in emotions:
         if emotion in original:
@@ -40,6 +41,7 @@ def add_emotions(clean_text, original):
     
     return clean_text
 
+#remove myanmar stopwords
 def remove_stopwords(data):
     return [item for item in data if item not in stopwords2]
 
