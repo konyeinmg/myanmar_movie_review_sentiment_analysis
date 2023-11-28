@@ -33,6 +33,14 @@ I used Dr Ye Kyaw Thu's myWord segmentation tool to extract words from sentences
 > As first step, this application is just giving input from command so as future work I would like to build GUI for better UX. 
 
 ## Metrics
+<ul>
+    <li>Accuracy : 68%</li>
+    <li>Precision : 0.714</li>
+    <li>Recall : 0.6</li>
+    <li>F1 Score : 0.652</li>
+</ul>
+
+> As I mentioned above, Myanmar has low resources for NLP. So this model was trained with just 200 reviews that is why accuracy cannot go over 70%. As a future work, I will add more data for better accuracy.
 
 ## Pros
 > It is literally simple. Even if you want to train another sentiment analysis such as cyberbullying detection, restaurant review, you just need to change data in json file.
@@ -47,3 +55,8 @@ I used Dr Ye Kyaw Thu's myWord segmentation tool to extract words from sentences
     <li>Evaluation</li>
     <li>GUI building</li>
 </ul>
+
+## Citation
+
+
+## Reference
