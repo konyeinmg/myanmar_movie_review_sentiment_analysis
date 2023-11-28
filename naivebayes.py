@@ -1,6 +1,7 @@
 import preprocess
 import numpy as np
 
+#count word freq according to label
 def count_words(data, y):
     result = dict()
     for y,sentence in zip(y, data):
@@ -13,6 +14,7 @@ def count_words(data, y):
 
     return result 
 
+#calculate loglikelihood and logprior
 def train(counts, X, y):
     loglikelihood = {}
     logprior = 0
