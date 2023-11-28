@@ -30,13 +30,34 @@ def train_test_split(train_percent, pos, neg):
 
     return train_x, test_x, train_y, test_y
 
+def precision_recall(actual_y, pred_y):
+    TP = FP = FN = 0
+
+    for i in range(len(actual_y)):
+        if actual_y[i] == 1 and pred_y[i] == 1:
+            TP += 1
+        elif actual_y[i] == 1 and pred_y[i] == 0:
+            FN += 1
+        elif actual_y[i] == 0 and pred_y[i] == 1:
+            FP += 1
+    
+    # Calculate Precision
+    precision = TP / (TP + FP) if (TP + FP) > 0 else 0.0
+
+    # Calculate Recall
+    recall = TP / (TP + FN) if (TP + FN) > 0 else 0.0
+
+    return precision,recall
+
+
+
 def accuracy(actual_y,pred_y):
     result = 0.0
     for y,y_cat in zip(actual_y,pred_y):
         if y == y_cat:
             result += 1
     accuracy = (result / len(actual_y)) * 100
-    return 
+    return accuracy
 
 def save_loglikelihood(file_url, loglikelihood):
     with open(file_url, 'w') as f:
