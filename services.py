@@ -13,6 +13,7 @@ def read_data(url):
 
     return pos_reviews, neg_reviews
 
+#split data with train percentage
 def train_test_split(train_percent, pos, neg):
     train_pos_len = int(len(pos) * train_percent)
     train_neg_len = int(len(neg) * train_percent)
@@ -30,6 +31,7 @@ def train_test_split(train_percent, pos, neg):
 
     return train_x, test_x, train_y, test_y
 
+#calculate precision and recall
 def precision_recall(actual_y, pred_y):
     TP = FP = FN = 0
 
@@ -50,7 +52,7 @@ def precision_recall(actual_y, pred_y):
     return precision,recall
 
 
-
+#calculate accuracy
 def accuracy(actual_y,pred_y):
     result = 0.0
     for y,y_cat in zip(actual_y,pred_y):
@@ -59,12 +61,14 @@ def accuracy(actual_y,pred_y):
     accuracy = (result / len(actual_y)) * 100
     return accuracy
 
+#save model loglikelihoods
 def save_loglikelihood(file_url, loglikelihood):
     with open(file_url, 'w') as f:
         for item in loglikelihood:
             string = item + '=>' + str(loglikelihood[item])
             f.write(string+'\n')
-        
+
+#save log prior     
 def save_logprior(file_url, logprior):
     with open(file_url, 'w') as f:
         f.write(str(logprior))
