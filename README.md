@@ -57,6 +57,22 @@ I used Dr Ye Kyaw Thu's myWord segmentation tool to extract words from sentences
 </ul>
 
 ## Citation
-
+<ul>
+<li>myWord: Syllable, Word and Phrase Segmenter for Burmese, Ye Kyaw Thu, Sept 2021, GitHub Link: https://github.com/ye-kyaw-thu/myWord</li>
+<li>Awesome-Myanmar-Wordlists-Dictionary-Collection 
+GitHub Link: https://github.com/chanmratekoko/Awesome-Myanmar-Wordlists-Dictionary-Collection
+</li>
+</ul>
 
 ## Reference
+<ol>
+<li>
+    Yuzana Win. Classification using Support Vector Machine to Detect Cyberbullying in Social Media for Myanmar Language.<i> IEEE International Conference on Consumer Electronics - Asia (ICCE-Asia)</i>. 2019. 
+</li>
+<li>
+    Yu Mon Aye, Sint Sint Aung. Enhanced Sentiment Classification for Informal
+    Myanmar Text of Restaurant Reviews. <i>IEEE SERA</i> 2018, June 13-15
+</li>
+<li> NLP Specialization, DeepLearning.ai</li>
+
+</ol>
